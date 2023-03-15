@@ -1,3 +1,5 @@
+# para iniciar a dash, no terminal inicie python index.py ele vai abrir no navegador http://127.0.0.1:8050/
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
