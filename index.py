@@ -4,7 +4,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
@@ -35,16 +35,33 @@ sidebar = html.Div(
         ),
         dbc.Nav(
             [
-                dbc.NavLink("Dashboard", href="/", active="exact"),
-                dbc.NavLink("O Projeto", href="/oprojeto", active="exact"),
-                dbc.NavLink("Integrantes", href="/integrantes", active="exact"),
+                dbc.NavLink("Dashboard", className="bi bi-house", href="/", active="exact"),
+                dbc.NavLink("O Projeto", className="bi bi-house", href="/oprojeto", active="exact"),
+                dbc.NavLink("Integrantes", className="bi bi-house", href="/integrantes", active="exact"),
             ],
             vertical=True,
             pills=True,
+        ),  
+        
+        dbc.Card(
+        [
+            html.H4("O Projeto", className="card-title"),
+            html.H6("Univesp - Eixo Computação", className="card-subtitle"),
+            html.P(
+                "Repositorio do Projeto "
+                "Dashboard em Python",
+                className="card-text",
+            ),
+            dbc.CardLink("Repositorio", className="bi bi-github", href="#"),
+        ]
         ),
+
     ],
     style=SIDEBAR_STYLE,
 )
+
+    
+
 
 content = html.Div(id="page-content", style=CONTENT_STYLE)
 
