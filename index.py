@@ -35,7 +35,7 @@ sidebar = html.Div(
         ),
         dbc.Nav(
             [
-                dbc.NavLink("Dashboard", className="bi bi-house", href="/", active="exact"),
+                dbc.NavLink("Dashboard", className="bi bi-house", href="/dashboard", active="exact"),
                 dbc.NavLink("O Projeto", className="bi bi-house", href="/oprojeto", active="exact"),
                 dbc.NavLink("Integrantes", className="bi bi-house", href="/integrantes", active="exact"),
             ],
@@ -62,15 +62,16 @@ sidebar = html.Div(
 
     
 
-
 content = html.Div(id="page-content", style=CONTENT_STYLE)
+
+
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
-    if pathname == "/":
+    if pathname == "/dashboard":
         return html.P("Aqui fica a dashboards!")
     elif pathname == "/oprojeto":
         return html.P("Aqui fica as informações do projeto!")
