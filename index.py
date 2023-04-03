@@ -4,9 +4,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 
-import flask
 import os
-from flask import Flask
 
 #importing required packages
 import pandas as pd
@@ -26,9 +24,6 @@ SIDEBAR_STYLE = {
     "padding": "2rem 1rem",
     "background-color": "#f8f9fa",
 }
-
-server = Flask(__name__)
-STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
 
 # the styles for the main content position it to the right of the sidebar and
 # add some padding.
@@ -77,24 +72,31 @@ content = html.Div(id="page-content", style=CONTENT_STYLE)
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
-#importing the data
-csvSource = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
-dfCSV = pd.read_csv(csvSource)
-df_br = dfCSV[dfCSV['Entity'] == 'Brazil']
+if not os.path.isfile("./assets/report.html"):
+    #importing the data
+    csvSource = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
+    dfCSV = pd.read_csv(csvSource)
+    df_br = dfCSV[dfCSV['Entity'] == 'Brazil']
 
-#descriptive statistics
-#profile = ProfileReport(df_br)
-#profile.to_file("test.html")
-
-# Added
-@app.server.route('/dashboard/<resource>')
-def serve_static(resource):
-    return flask.send_from_directory(STATIC_PATH, resource)
+    # generate report
+    profile = ProfileReport(
+        df=df_br, samples=None, correlations=None, missing_diagrams=None, duplicates=None, plot={"dpi": 200, "image_format": "png"},
+    )
+    profile.to_file("./assets/report.html")
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/dashboard":
-        return html.A('Navigate to nested web page', href='/assets/test.html'),
+        return html.Div(
+            [
+                html.P("Mortes estimadas relacionadas à tuberculose entre pessoas vivendo com HIV por ano"),
+                html.Img(
+            src="./assets/tb-related-deaths-hiv.png",
+            width="100%",
+            height="100%"
+        )
+            ]
+        )
     elif pathname == "/oprojeto":
         return html.P("Aqui fica as informações do projeto!")
     elif pathname == "/integrantes":
