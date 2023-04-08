@@ -4,7 +4,15 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
 
+import os
+
+#importing required packages
+import pandas as pd
+from ydata_profiling import ProfileReport
+import numpy as np
+
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
+app.scripts.config.serve_locally = True
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
@@ -60,19 +68,35 @@ sidebar = html.Div(
     style=SIDEBAR_STYLE,
 )
 
-    
-
 content = html.Div(id="page-content", style=CONTENT_STYLE)
-
-
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
+if not os.path.isfile("./assets/report.html"):
+    #importing the data
+    csvSource = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
+    dfCSV = pd.read_csv(csvSource)
+    df_br = dfCSV[dfCSV['Entity'] == 'Brazil']
+
+    # generate report
+    profile = ProfileReport(
+        df=df_br, samples=None, correlations=None, missing_diagrams=None, duplicates=None, plot={"dpi": 200, "image_format": "png"},
+    )
+    profile.to_file("./assets/report.html")
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/dashboard":
-        return html.P("Aqui fica a dashboards!")
+        return html.Div(
+            [
+                html.P("Mortes estimadas relacionadas à tuberculose entre pessoas vivendo com HIV por ano"),
+                html.Img(
+            src="./assets/tb-related-deaths-hiv.png",
+            width="100%",
+            height="100%"
+        )
+            ]
+        )
     elif pathname == "/oprojeto":
         return html.P("Aqui fica as informações do projeto!")
     elif pathname == "/integrantes":
