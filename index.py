@@ -10,6 +10,7 @@ import os
 import pandas as pd
 from ydata_profiling import ProfileReport
 import numpy as np
+import plotly.express as px
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
 app.scripts.config.serve_locally = True
@@ -72,29 +73,27 @@ content = html.Div(id="page-content", style=CONTENT_STYLE)
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
-if not os.path.isfile("./assets/report.html"):
-    #importing the data
-    csvSource = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
-    dfCSV = pd.read_csv(csvSource)
-    df_br = dfCSV[dfCSV['Entity'] == 'Brazil']
-
-    # generate report
-    profile = ProfileReport(
-        df=df_br, samples=None, correlations=None, missing_diagrams=None, duplicates=None, plot={"dpi": 200, "image_format": "png"},
-    )
-    profile.to_file("./assets/report.html")
-
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
-    if pathname == "/dashboard":
+    if pathname == "/dashboard" or pathname == "/" :
+        csvSource = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
+        dfCSV = pd.read_csv(csvSource)
+        dfCSV.rename(
+        columns={
+            "Entity": "Entity",
+            "Code": "Code",
+            "Year": "Ano",
+            "Estimated TB-related deaths among people living with HIV - estimate": "Mortes estimadas"
+        },
+        inplace=True
+    )
+        df_br = dfCSV[dfCSV['Entity'] == 'Brazil']
+        
+        fig = px.scatter(df_br, x="Ano", y="Mortes estimadas")
         return html.Div(
             [
-                html.P("Mortes estimadas relacionadas à tuberculose entre pessoas vivendo com HIV por ano"),
-                html.Img(
-            src="./assets/tb-related-deaths-hiv.png",
-            width="100%",
-            height="100%"
-        )
+                html.B("Mortes estimadas relacionadas à tuberculose entre pessoas vivendo com HIV por ano"),
+                html.Div([ dcc.Graph(figure=fig) ])
             ]
         )
     elif pathname == "/oprojeto":
