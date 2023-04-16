@@ -1,6 +1,5 @@
-import dash
 import dash_bootstrap_components as dbc
-from dash import Input, Output, dcc, html
+from dash import dcc, html
 from assets.csvList import csvList
 import pandas as pd
 import plotly.express as px
