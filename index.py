@@ -12,6 +12,8 @@ from ydata_profiling import ProfileReport
 import numpy as np
 import plotly.express as px
 from pages.content import contentt
+from assets.csvList import csvList
+from components.accordion import accordion
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
 app.scripts.config.serve_locally = True
@@ -87,40 +89,8 @@ def getGraph(csvSource, newColumnsNames, xName, yName):
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
     if pathname == "/dashboard" or pathname == "/":
-        tbRelatedDeathsHivCsv = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/tb-related-deaths-hiv.csv"
-        tbRelatedDeathsHivDFNewColumns = {
-            "Entity": "Entity",
-            "Code": "Code",
-            "Year": "Ano",
-            "Estimated TB-related deaths among people living with HIV - estimate": "Mortes estimadas"
-        }
+        return accordion
 
-        deathsFromHivByAgeCsv = "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/deaths-from-hiv-by-age.csv"
-        deathsFromHivByAgeDFNewColumns = {
-            "Entity": "Entity",
-            "Code": "Code",
-            "Year": "Ano",
-            "Deaths - HIV/AIDS - Sex: Both - Age: Under 5 (Number)": "Idade: Menor do que 5 anos",
-            "Deaths - HIV/AIDS - Sex: Both - Age: 70+ years (Number)": "Idade: Mais do que 70 anos",
-            "Deaths - HIV/AIDS - Sex: Both - Age: 5-14 years (Number)": "Idade: 5 a 14 anos",
-            "Deaths - HIV/AIDS - Sex: Both - Age: 15-49 years (Number)": "Idade: 15 a 49 anos",
-            "Deaths - HIV/AIDS - Sex: Both - Age: 50-69 years (Number)": "Idade: 50 a 69 anos"
-        }
-
-        return html.Div(
-    dbc.Accordion(
-        [
-            dbc.AccordionItem(
-                html.Div([ dcc.Graph(figure=getGraph(tbRelatedDeathsHivCsv, tbRelatedDeathsHivDFNewColumns, "Ano", "Mortes estimadas")) ]),
-                title="Mortes estimadas relacionadas à tuberculose entre pessoas vivendo com HIV por ano"
-            ),
-            dbc.AccordionItem(
-                html.Div([ dcc.Graph(figure=getGraph(deathsFromHivByAgeCsv, deathsFromHivByAgeDFNewColumns, "Ano", "Idade: 50 a 69 anos")) ]), title="Mortes relacionadas com HIV/AIDS em pessoas entre 50 a 69 anos por ano"
-            )
-        ],
-        start_collapsed=True,
-    ),
-)
     elif pathname == "/oprojeto":
         return html.P("Aqui fica as informações do projeto!")
     elif pathname == "/integrantes":
