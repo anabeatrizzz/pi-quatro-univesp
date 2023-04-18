@@ -1,13 +1,15 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
-from pages import content
+from pages import content, members
 from components import accordion, sidebar
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
+app = dash.Dash(external_stylesheets=[
+                dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], title="Análise de dados públicos da saúde sobre DSTs")
 app.scripts.config.serve_locally = True
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
+
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def render_page_content(pathname):
@@ -16,10 +18,10 @@ def render_page_content(pathname):
 
     elif pathname == "/oprojeto":
         return html.P("Aqui fica as informações do projeto!")
-    
+
     elif pathname == "/integrantes":
-        return html.P("Aqui fica as nossas informações!")
-    
+        return members
+
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
         [
