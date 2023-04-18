@@ -20,7 +20,6 @@ def render_page_content(pathname):
         return html.P("Aqui fica as informações do projeto!")
 
     elif pathname == "/integrantes":
-        # return html.P("Aqui fica as nossas informações!")
         return members
 
     # If the user tries to reach a different page, return a 404 message
