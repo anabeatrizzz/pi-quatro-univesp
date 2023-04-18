@@ -5,7 +5,7 @@ from pages import content, members
 from components import accordion, sidebar
 
 app = dash.Dash(external_stylesheets=[
-                dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP])
+                dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], title="Análise de dados públicos da saúde sobre DSTs")
 app.scripts.config.serve_locally = True
 
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
