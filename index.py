@@ -1,13 +1,15 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import Input, Output, dcc, html
-from pages import content, members
+from pages import content, members, project
 from components import accordion, sidebar
 
-app = dash.Dash(external_stylesheets=[
-                dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], title="Análise de dados públicos da saúde sobre DSTs")
+app = dash.Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
+    title="Análise de dados públicos da saúde sobre DSTs",
+    external_scripts=["/assets/plotly-locale-pt-br.js"]
+)
 app.scripts.config.serve_locally = True
-
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 
@@ -17,7 +19,7 @@ def render_page_content(pathname):
         return accordion
 
     elif pathname == "/oprojeto":
-        return html.P("Aqui fica as informações do projeto!")
+        return project
 
     elif pathname == "/integrantes":
         return members
@@ -25,7 +27,7 @@ def render_page_content(pathname):
     # If the user tries to reach a different page, return a 404 message
     return html.Div(
         [
-            html.H1("404: Not found", className="text-danger"),
+            html.H1("404: Not found", className="text-danger"),  # type: ignore
             html.Hr(),
             html.P(f"The pathname {pathname} was not recognised..."),
         ],
