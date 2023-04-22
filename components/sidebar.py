@@ -43,7 +43,7 @@ sidebar = html.Div(
                     className="card-text",
                 ),
                 dbc.CardLink(
-                    "Repositório", className="bi bi-github", href="#"),
+                    "Repositório", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp"),
             ]
         ),
 
