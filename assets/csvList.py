@@ -53,7 +53,7 @@ csvList = [
         "newColumnsNames": inherentNewColumnsNames
     },
     {
-        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/data-kaggle/tb-patients-tested-positive-for-hiv.csv",
+        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/selected-datasets/tb-patients-tested-positive-for-hiv.csv",
         "title": "Pacientes que testaram positivo para HIV por ano",
         "yColumn": "Total de pacientes que testaram positivo para HIV",
         "newColumnsNames": {
@@ -64,7 +64,7 @@ csvList = [
         }
     },
     {
-        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/data-kaggle/tb-patients-living-with-hiv-receiving-art.csv",
+        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/selected-datasets/tb-patients-living-with-hiv-receiving-art.csv",
         "title": "Pacientes vivendo com HIV e que fazem terapia anti-retroviral por ano",
         "yColumn": "Total de pacientes vivendo com HIV que fazem terapia anti-retroviral",
         "newColumnsNames": {
@@ -75,7 +75,7 @@ csvList = [
         }
     },
     {
-        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/data-kaggle/life-expectancy.csv",
+        "csvSource": "https://raw.githubusercontent.com/anabeatrizzz/pi-quatro-univesp/master/data-bases-bkp/selected-datasets/life-expectancy.csv",
         "title": "Expectativa de vida de pessoas vivendo com HIV durante os anos",
         "yColumn": "Expectativa de Vida",
         "newColumnsNames": {
