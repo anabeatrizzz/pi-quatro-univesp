@@ -1,35 +1,24 @@
 from dash import html
 import dash_bootstrap_components as dbc
 
-SIDEBAR_STYLE = {
-    "position": "fixed",
-    "top": 0,
-    "left": 0,
-    "bottom": 0,
-    "width": "16rem",
-    "padding": "2rem 1rem",
-    "background-color": "#f8f9fa",
-}
-
 sidebar = html.Div(
     [
-        html.Img(src="../assets/logo-univesp.png"),
-        html.H2("PI - IV", className="display-4"),
-        html.Hr(),
+        html.Img(src="../assets/logo-univesp-white.png", className="logo"),
+        html.H2("PI - IV", className="sub-tt"),
         html.P(
             "Análise de dados públicos da saúde sobre DSTs", className="lead"
         ),
         dbc.Nav(
             [
-                dbc.NavLink("Dashboard", className="bi bi-house",
+                dbc.NavLink("Dashboard", className="bi bi-heart-pulse",
                             href="/dashboard", active="exact"),
-                dbc.NavLink("O Projeto", className="bi bi-house",
+                            
+                dbc.NavLink("O Projeto", className="bi bi-columns-gap",
                             href="/oprojeto", active="exact"),
-                dbc.NavLink("Integrantes", className="bi bi-house",
+
+                dbc.NavLink("Integrantes", className="bi bi-people",
                             href="/integrantes", active="exact"),
-            ],
-            vertical=True,
-            pills=True,
+            ],   
         ),
 
         dbc.Card(
@@ -42,11 +31,9 @@ sidebar = html.Div(
                     "Dashboard em Python",
                     className="card-text",
                 ),
-                dbc.CardLink(
+                dbc.Button(
                     "Repositório", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp"),
             ]
         ),
 
-    ],
-    style=SIDEBAR_STYLE,
-)
+    ],className="sidebar")

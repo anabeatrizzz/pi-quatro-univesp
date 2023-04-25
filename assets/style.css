@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+:root {
+    --bs-blue: #0d6efd;
+    --bs-white-2: #fff9;
+    --bs-white: #fff;
+}
+
+.body {
+    font-family: Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 16rem;
+    padding: 2rem 1rem;
+    background-color: var(--bs-blue);
+}
+
+.logo {
+    width: 219px;
+    justify-items: center;
+}
+
+.sub-tt {
+    color: var(--bs-white-2);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 12px 0px;
+}
+
+.lead {
+    color: var(--bs-white-2);
+    font-weight: 600;
+}
+.nav {
+    margin-bottom: 15px;
+}
+
+.nav-link {
+    color: var(--bs-white);
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: var(--bs-border-color);
+}
+
+.bi::before {
+    margin-right: 7px;
+}
