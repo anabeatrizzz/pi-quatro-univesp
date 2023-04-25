@@ -77,3 +77,36 @@
     color: var(--bs-blue);
     margin-left: 20px;
 }
+
+.section-title {
+	font-size: 28px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	font-weight: 400;
+	display: inline-block;
+	position: relative;
+}
+.section-title:after,
+.section-title:before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+}
+.section-title:after {
+	height: 2px;
+	background-color: var(--bs-blue);
+	left: 25%;
+	right: 25%;
+}
+
+.section-title:before {
+	width: 15px;
+	height: 15px;
+	border: 3px solid #fff;
+	background-color: var(--bs-blue);
+	left: 50%;
+	transform: translatex(-50%);
+	bottom: -6px;
+	z-index: 9;
+	border-radius: 50%;
+}

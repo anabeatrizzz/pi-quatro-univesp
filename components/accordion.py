@@ -39,6 +39,7 @@ def getAccordionItems():
 
 
 accordion = html.Div([
+    html.B("Dashboard", className="section-title"),
     dbc.Accordion(
         getAccordionItems(),
         start_collapsed=True,

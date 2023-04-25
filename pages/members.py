@@ -24,7 +24,7 @@ def getMemberParagraph():
 
 members = html.Div(
     [
-        html.B("A equipe é composta por:"),
+        html.B("A Equipe", className="section-title"),
         html.Br(),
         html.Br(),
         html.Div(getMemberParagraph())
