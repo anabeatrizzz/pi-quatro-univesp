@@ -21,19 +21,8 @@ sidebar = html.Div(
             ],   
         ),
 
-        dbc.Card(
-            [
-                html.H4("O Projeto", className="card-title"),
-                html.H6("Univesp - Eixo Computação",
-                        className="card-subtitle"),
-                html.P(
-                    "Repositório do Projeto "
-                    "Dashboard em Python",
-                    className="card-text",
-                ),
-                dbc.Button(
-                    "Repositório", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp"),
-            ]
-        ),
+         dbc.Button(
+                    "Github", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp")
 
     ],className="sidebar")
+

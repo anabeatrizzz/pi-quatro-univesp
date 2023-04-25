@@ -4,6 +4,7 @@
     --bs-blue: #0d6efd;
     --bs-white-2: #fff9;
     --bs-white: #fff;
+    --bs-black: #000;
 }
 
 .body {
@@ -22,7 +23,7 @@
 }
 
 .logo {
-    width: 219px;
+    width: 200px;
     justify-items: center;
 }
 
@@ -52,4 +53,10 @@
 
 .bi::before {
     margin-right: 7px;
+}
+
+.btn {
+    background-color: var(--bs-white);
+    color: var(--bs-blue);
+    margin-left: 20px;
 }
