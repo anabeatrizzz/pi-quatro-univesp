@@ -10,6 +10,7 @@ app = dash.Dash(
     external_scripts=["/assets/plotly-locale-pt-br.js"]
 )
 app.scripts.config.serve_locally = True
+app.title = 'PI - IV | DSTs'
 app.layout = html.Div([dcc.Location(id="url"), sidebar, content])
 
 
