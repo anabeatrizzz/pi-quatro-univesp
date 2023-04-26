@@ -10,13 +10,13 @@ sidebar = html.Div(
         ),
         dbc.Nav(
             [
-                dbc.NavLink("Dashboard", className="bi bi-heart-pulse",
+                dbc.NavLink("Dashboard", className="bi bi-heart-pulse icsd",
                             href="/dashboard", active="exact"),
                             
-                dbc.NavLink("O Projeto", className="bi bi-columns-gap",
+                dbc.NavLink("O Projeto", className="bi bi-columns-gap icsd",
                             href="/oprojeto", active="exact"),
 
-                dbc.NavLink("Integrantes", className="bi bi-people",
+                dbc.NavLink("Integrantes", className="bi bi-people icsd",
                             href="/integrantes", active="exact"),
             ],   
         ),
