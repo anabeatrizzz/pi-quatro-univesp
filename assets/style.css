@@ -234,3 +234,19 @@ ul.timeline-list li:before {
 	background: var(--bs-blue);
 	color: var(--bs-white);
   }
+
+
+  /* Accordion */
+
+  .accordion-item {
+	border: var(--bs-accordion-border-width) solid var(--bs-blue);
+  }
+
+  .accordion-button {
+	color: var(--bs-blue);
+  }
+
+  .accordion-button:not(.collapsed) {
+    color: var(--bs-white);
+    background-color: var(--bs-blue-2);
+  }

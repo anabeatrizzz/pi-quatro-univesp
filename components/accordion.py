@@ -54,8 +54,9 @@ accordion = html.Div([
         dbc.Accordion(
         getAccordionItems(),
         start_collapsed=True,
-
-    )], className="container"),
+        )
+        
+    ], className="container"),
         
     ], className="experience pt-100 pb-100", id="experience"),
 ])
