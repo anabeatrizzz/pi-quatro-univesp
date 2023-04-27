@@ -14,7 +14,7 @@ members = html.Div([
 
           ], className="row"),
 
-        html.Button(["Rodrigo Sanches Gamboa"], className="link", id="btn"),
+        html.Button(["Rodrigo Sanches Gamboa"], className="link", id="btn"'),
         html.Button(["Ana Beatriz"], className="link", id="btn"),
         html.Button(["Clovis Garcia"], className="link", id="btn"),
         html.Button(["Isabella De Oliveira"], className="link", id="btn"),
