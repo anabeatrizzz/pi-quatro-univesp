@@ -200,7 +200,7 @@ ul.timeline-list li:before {
 
 /* Teams */
 
-#btn {
+.members-btn {
 	font-size: 25px;
 	font-family: 'Architects Daughter', cursive;
 	max-width: 24rem;

@@ -39,7 +39,7 @@ def getAccordionItems():
 
 
 accordion = html.Div([
-    html.Section([    
+    html.Section([
         html.Div([
             html.Div([
                 html.Div([
@@ -49,14 +49,14 @@ accordion = html.Div([
 
                 ], className="col-xl-8 mx-auto text-center"),
 
-          ], className="row"),
+            ], className="row"),
 
-        dbc.Accordion(
-        getAccordionItems(),
-        start_collapsed=True,
-        )
-        
-    ], className="container"),
-        
+            dbc.Accordion(
+                getAccordionItems(),
+                start_collapsed=True,
+            )
+
+        ], className="container"),
+
     ], className="experience pt-100 pb-100", id="experience"),
 ])
