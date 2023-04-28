@@ -1,7 +1,29 @@
 from dash import html
 
+
+def getMembersList():
+    membersList = [
+        "Rodrigo Sanches Gamboa",
+        "Ana Beatriz",
+        "Clovis Garcia",
+        "Isabella De Oliveira",
+        "Rafael Fortes",
+        "Abner Veloso",
+        "Alan Alves",
+        "Lucas Dos Santos"
+    ]
+
+    buttonItems = []
+
+    for name in membersList:
+        buttonItems.append(
+            html.Button([name], className="link members-btn", id=name),
+        )
+    return buttonItems
+
+
 members = html.Div([
-    html.Section([    
+    html.Section([
         html.Div([
             html.Div([
                 html.Div([
@@ -12,18 +34,11 @@ members = html.Div([
 
                 ], className="col-xl-8 mx-auto text-center"),
 
-          ], className="row"),
+            ], className="row"),
 
-        html.Button(["Rodrigo Sanches Gamboa"], className="link", id="btn"),
-        html.Button(["Ana Beatriz"], className="link", id="btn"),
-        html.Button(["Clovis Garcia"], className="link", id="btn"),
-        html.Button(["Isabella De Oliveira"], className="link", id="btn"),
-        html.Button(["Rafael Fortes"], className="link", id="btn"),
-        html.Button(["Abner Veloso"], className="link", id="btn"),
-        html.Button(["Alan Alves"], className="link", id="btn"),
-        html.Button(["Lucas Dos Santos"], className="link", id="btn"), 
+            html.Div(getMembersList()),
 
         ], className="container"),
-        
+
     ], className="experience pt-100 pb-100", id="experience"),
 ])
