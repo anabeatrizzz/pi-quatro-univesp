@@ -20,12 +20,12 @@ content = html.Div(
     [
         dmc.MediaQuery(
             [webcontent],
-            smallerThan="md",
+            smallerThan="sm",
             styles=CONTENT_STYLE
         ),
         dmc.MediaQuery(
             [mobilecontent],
-            largerThan="md",
+            largerThan="sm",
             styles=CONTENT_STYLE
         ),
     ]

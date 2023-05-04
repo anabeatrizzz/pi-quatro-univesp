@@ -65,12 +65,12 @@ sidebar = html.Div(
         dmc.MediaQuery(
             [websidebar],
             innerBoxStyle=INNERBOXSTYLE,
-            smallerThan="md",
+            smallerThan="sm",
             styles=MEDIAQUERYSTYLES,
         ),
         dmc.MediaQuery(
             [mobilesidebar],
-            largerThan="md",
+            largerThan="sm",
             innerBoxStyle=INNERBOXSTYLE,
             styles=MEDIAQUERYSTYLES,
         ),
