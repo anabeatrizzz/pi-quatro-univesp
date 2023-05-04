@@ -27,6 +27,10 @@
     background-color: var(--bs-blue);
 }
 
+.mobilesidebar {
+	background-color: var(--bs-blue);
+}
+
 .logo {
     width: 200px;
     justify-items: center;

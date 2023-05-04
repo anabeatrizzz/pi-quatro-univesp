@@ -1,4 +1,5 @@
 from dash import html
+import dash_mantine_components as dmc
 
 CONTENT_STYLE = {
     "margin-left": "18rem",
@@ -6,4 +7,26 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
-content = html.Div(id="page-content", style=CONTENT_STYLE)
+mobilecontent = html.Div(
+    id="page-content"
+)
+
+webcontent = html.Div(
+    id="page-content",
+    style=CONTENT_STYLE
+)
+
+content = html.Div(
+    [
+        dmc.MediaQuery(
+            [webcontent],
+            smallerThan="md",
+            styles=CONTENT_STYLE
+        ),
+        dmc.MediaQuery(
+            [mobilecontent],
+            largerThan="md",
+            styles=CONTENT_STYLE
+        ),
+    ]
+)
