@@ -1,7 +1,11 @@
 from dash import html
 import dash_bootstrap_components as dbc
+import dash_mantine_components as dmc
 
-sidebar = html.Div(
+INNERBOXSTYLE = {"width": "auto"}
+MEDIAQUERYSTYLES = {"display": "none", "width": "auto"}
+
+websidebar = html.Div(
     [
         html.Img(src="../assets/logo-univesp-white.png", className="logo"),
         html.H2("PI - IV", className="sub-tt"),
@@ -12,17 +16,63 @@ sidebar = html.Div(
             [
                 dbc.NavLink("Dashboard", className="bi bi-heart-pulse icsd",
                             href="/dashboard", active="exact"),
-                            
+
                 dbc.NavLink("O Projeto", className="bi bi-columns-gap icsd",
                             href="/oprojeto", active="exact"),
 
                 dbc.NavLink("Integrantes", className="bi bi-people icsd",
                             href="/integrantes", active="exact"),
-            ],   
+            ],
         ),
 
-         dbc.Button(
-                    "Github", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp")
+        dbc.Button(
+            "Github", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp")
 
-    ],className="sidebar")
+    ],
+    className="sidebar"
+)
 
+mobilesidebar = dbc.NavbarSimple(
+    [
+        html.Img(src="../assets/logo-univesp-white.png", className="logo"),
+        html.H2("PI - IV", className="sub-tt"),
+        html.P(
+            "Análise de dados públicos da saúde sobre DSTs", className="lead"
+        ),
+        dbc.Nav(
+            [
+                dbc.NavLink("Dashboard", className="bi bi-heart-pulse icsd",
+                            href="/dashboard", active="exact"),
+
+                dbc.NavLink("O Projeto", className="bi bi-columns-gap icsd",
+                            href="/oprojeto", active="exact"),
+
+                dbc.NavLink("Integrantes", className="bi bi-people icsd",
+                            href="/integrantes", active="exact"),
+            ],
+        ),
+
+        dbc.Button(
+            "Github", className="bi bi-github", external_link=True, target="_blank", href="https://github.com/anabeatrizzz/pi-quatro-univesp")
+
+    ],
+    color="bs-blue",
+    class_name="mobilesidebar"
+)
+
+sidebar = html.Div(
+    [
+        dmc.MediaQuery(
+            [websidebar],
+            innerBoxStyle=INNERBOXSTYLE,
+            smallerThan="md",
+            styles=MEDIAQUERYSTYLES,
+        ),
+        dmc.MediaQuery(
+            [mobilesidebar],
+            largerThan="md",
+            innerBoxStyle=INNERBOXSTYLE,
+            styles=MEDIAQUERYSTYLES,
+        ),
+    ]
+)

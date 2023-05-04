@@ -5,6 +5,7 @@ from pages import content, members, project
 from components import accordion, sidebar
 
 app = dash.Dash(
+    __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
     title="Análise de dados públicos da saúde sobre DSTs",
     external_scripts=["/assets/plotly-locale-pt-br.js"]
