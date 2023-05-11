@@ -11,7 +11,7 @@ def getGraph(csvSource, newColumnsNames, xName, yName):
         df.rename(columns=newColumnsNames, inplace=True)
 
     newDF = df[df['Entity'] == 'Brazil']
-    fig = px.scatter(newDF, x=xName, y=yName)
+    fig = px.scatter(newDF, x=xName, y=yName, width=250)
 
     return fig
 
